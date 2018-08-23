@@ -1,0 +1,16 @@
+in my project ,there is a requirment:use a container like map to store data, key is the relative path, value is the absolute path.
+first question:how to get the specified file under the specified path except the file under the bin folder?
+
+answer: find specifiedPath -path ignoredPath -prune -o -name 'format'
+
+second question: we just want to get part of fullPath to generate relative path
+
+answer: 第一次的时候，我只是用projectPath的最后一个字段作为key（projectPath的最后一个字段就是包含program的folder name）然后把key后面的
+        路径取出来和projectName组合成“map 的 key” ，但是我这种做法一种情况没有考虑到：如果路径中有和含有program folder name 一样的name话
+        那么 我这样解析就会出现问题！
+        第二次： 这次我考虑利用fullPath 和 projectPath（projectPath 就是fullPath中含有program folde 的那一部分）
+        const char *p = strstr(fullPath.c_str(),projectPath.c_str());
+        if(p)
+        {
+          string s= p + projectPath.size();
+        }
