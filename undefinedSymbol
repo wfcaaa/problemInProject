@@ -1,0 +1,2 @@
+proble: undefine symbol:xxxx
+when eocounter this case, you can use command: ldd -r xxx.so
